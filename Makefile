@@ -1,6 +1,19 @@
 all: lint
 .PHONY: all
 
+generate:
+	wails generate module
+.PHONY: generate
+
+build: generate
+	wails build
+.PHONY: build
+
+install:
+	go install github.com/wailsapp/wails/v2/cmd/wails@latest
+	wails doctor
+.PHONY: install
+
 lint-ts:
 	npm --prefix frontend run format
 	npm --prefix frontend run lint
@@ -12,7 +25,7 @@ lint-go:
 	go run honnef.co/go/tools/cmd/staticcheck ./...
 .PHONY: lint-go
 
-lint: lint-go lint-ts
+lint: generate lint-go lint-ts
 .PHONY: lint
 
 format-fix-ts:

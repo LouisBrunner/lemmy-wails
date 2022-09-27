@@ -1,6 +1,10 @@
 # Lemmy
 
-This is a `wails` project, see [here](https://wails.io/docs/gettingstarted/installation) for installation.
+This is a `wails` project.
+
+## Installation
+
+Use `make install` to prepare this project.
 
 ## Live Development
 

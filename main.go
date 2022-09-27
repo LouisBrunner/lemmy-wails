@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"encoding/json"
 	"fmt"
 	"os"
 
@@ -13,11 +14,24 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
-func main() {
+//go:embed wails.json
+var rawConfig []byte
+
+type wailsConfig struct {
+	Name string `json:"name"`
+}
+
+func work() error {
 	app := application.New()
 
-	err := wails.Run(&options.App{
-		Title:            "lemmy",
+	config := wailsConfig{}
+	err := json.Unmarshal(rawConfig, &config)
+	if err != nil {
+		return fmt.Errorf("failed to parse internal config: %w", err)
+	}
+
+	return wails.Run(&options.App{
+		Title:            config.Name,
 		Width:            1024,
 		Height:           768,
 		Assets:           assets,
@@ -27,6 +41,10 @@ func main() {
 			app.Bindings(),
 		},
 	})
+}
+
+func main() {
+	err := work()
 	if err != nil {
 		fmt.Printf("error: %v", err)
 		os.Exit(1)

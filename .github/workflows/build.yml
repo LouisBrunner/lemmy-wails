@@ -28,4 +28,19 @@ jobs:
       run: make lint
 
     - name: Build
-      run: make build
+      run: make build-all
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Lemmy-darwin-arm64
+        path: build/bin/Lemmy-arm64.app/
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Lemmy-darwin-amd64
+        path: build/bin/Lemmy-amd64.app/
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Lemmy-windows-amd64
+        path: build/bin/Lemmy-amd64.exe

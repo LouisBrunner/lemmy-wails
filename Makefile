@@ -24,6 +24,7 @@ build-all: generate
 
 install:
 	go install github.com/wailsapp/wails/v2/cmd/wails@latest
+	$(NPM) i
 	wails doctor
 .PHONY: install
 

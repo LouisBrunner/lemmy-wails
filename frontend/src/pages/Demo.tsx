@@ -1,29 +1,29 @@
-import {Greet} from "../wailsjs/go/bindings/bindings"
-import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
-import TextField from "@mui/material/TextField"
-import Typography from "@mui/material/Typography"
-import {ChangeEvent, FormEvent, useCallback, useState} from "react"
+import {Greet} from "../../wailsjs/go/bindings/bindings";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import {ChangeEvent, FormEvent, useCallback, useState} from "react";
 
 export const Demo = (): JSX.Element => {
-  const [resultText, setResultText] = useState("Please enter your name below 👇")
-  const [name, setName] = useState("")
+  const [resultText, setResultText] = useState("Please enter your name below 👇");
+  const [name, setName] = useState("");
 
   const updateName = useCallback(
     (e: ChangeEvent<HTMLInputElement>): void => {
-      setName(e.target.value)
+      setName(e.target.value);
     },
     [setName],
-  )
+  );
 
   const greet = useCallback(
     async (e: FormEvent<HTMLFormElement>): Promise<void> => {
-      e.preventDefault()
-      const greeting = await Greet(name)
-      setResultText(greeting)
+      e.preventDefault();
+      const greeting = await Greet(name);
+      setResultText(greeting);
     },
     [name, setResultText],
-  )
+  );
 
   return (
     <Box
@@ -45,5 +45,5 @@ export const Demo = (): JSX.Element => {
         </Button>
       </Box>
     </Box>
-  )
-}
+  );
+};

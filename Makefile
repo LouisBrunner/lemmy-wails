@@ -1,11 +1,5 @@
 NPM = npm --prefix frontend
 
-BUILD_ALL_OS := darwin/amd64,darwin/arm64,windows/amd64
-
-ifeq ($(shell uname), Linux)
-BUILD_ALL_OS = $(BUILD_ALL_OS),linux/amd64
-endif
-
 all: lint
 .PHONY: all
 
@@ -25,7 +19,7 @@ build: generate
 .PHONY: build
 
 build-all: generate
-	wails build -platform $(BUILD_ALL_OS)
+	wails build -platform darwin/amd64,darwin/arm64,windows/amd64,linux/amd64
 .PHONY: build-all
 
 install:
@@ -51,6 +45,9 @@ lint: lint-go lint-ts
 format-fix-ts:
 	$(NPM) run format-fix
 .PHONY: format-fix-ts
+
+test: generate
+.PHONY: test
 
 clean:
 	rm -rf build/bin frontend/dist frontend/wailsjs

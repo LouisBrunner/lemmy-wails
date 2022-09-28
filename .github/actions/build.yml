@@ -1,0 +1,10 @@
+name: Build targets
+description: Build all targets for the current host
+runs:
+  using: composite
+  steps:
+    - name: Setup
+      uses: ./.github/actions/setup
+
+    - name: Build
+      run: make build-all

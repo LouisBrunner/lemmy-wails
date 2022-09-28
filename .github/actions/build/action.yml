@@ -6,6 +6,20 @@ runs:
     - name: Setup
       uses: ./.github/actions/setup
 
+    - name: Install system dependencies (Linux)
+      shell: bash
+      run: sudo apt-get update && sudo apt-get install libgtk-3-dev libwebkit2gtk-4.0-dev
+      if: ${{ runner.os == 'Linux' }}
+
+    - name: Install system dependencies (macOS)
+      shell: bash
+      run: brew install upx
+      if: ${{ runner.os == 'macOS' }}
+
+    - name: Check system sanity
+      shell: bash
+      run: make doctor
+
     - name: Build
       shell: bash
       run: make build-all

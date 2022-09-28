@@ -1,24 +1,50 @@
 package logging
 
 import (
+	"io"
+	"os"
+	"path/filepath"
+
 	"github.com/LouisBrunner/lemmy/library/backend/internal/common"
 	"github.com/sirupsen/logrus"
 	"github.com/wailsapp/wails/v2/pkg/logger"
 )
 
-// TODO: FINISH HERE
-func NewLogger(dir string) *logrus.Logger {
+func NewLogger(dir string) (*logrus.Logger, func()) {
 	log := logrus.New()
 	log.SetReportCaller(true)
-	// log.SetFormatter()
+	log.SetFormatter(&logrus.TextFormatter{
+		FullTimestamp:    true,
+		CallerPrettyfier: prettyCaller,
+	})
 
+	log.SetLevel(logrus.DebugLevel)
+
+	closer := func() {}
 	err := common.MkdirIfDoNotExist(dir)
 	if err != nil {
-		log.WithError(err).Error("failed to create logging directory")
+		log.WithError(err).Errorf("failed to create logging directory: %s", dir)
 	} else {
-		// log.SetOutput()
+		path := filepath.Join(dir, "app.log")
+		file, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+		if err != nil {
+			log.WithError(err).Errorf("failed to open log for writing: %s", path)
+		} else {
+			closer = func() {
+				err = file.Close()
+				if err != nil {
+					log.WithError(err).Error("failed to close log file")
+				}
+			}
+			log.SetOutput(&writerMux{
+				writers: []io.Writer{
+					os.Stderr,
+					file,
+				},
+			})
+		}
 	}
-	return log
+	return log, closer
 }
 
 func NewAdapter(log *logrus.Logger) logger.Logger {

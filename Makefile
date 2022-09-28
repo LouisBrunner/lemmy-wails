@@ -25,8 +25,12 @@ build-all: generate
 install:
 	go install github.com/wailsapp/wails/v2/cmd/wails@latest
 	$(NPM) i
-	wails doctor
+	make doctor
 .PHONY: install
+
+doctor:
+	wails doctor
+.PHONY: doctor
 
 lint-ts: generate
 	$(NPM) run format

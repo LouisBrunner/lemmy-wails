@@ -34,7 +34,7 @@ func (me *worker[Bindings, Config]) Work() error {
 
 	dirs := appdir.New(wailsConfig.Name)
 
-	log := logging.NewLogger(dirs.UserLogs())
+	log, closer := logging.NewLogger(dirs.UserLogs())
 	cfgMng := config.NewManager[Config](log, dirs.UserConfig())
 
 	userApp, err := me.opts.AppMaker(log, cfgMng)
@@ -42,7 +42,7 @@ func (me *worker[Bindings, Config]) Work() error {
 		return fmt.Errorf("user app failed to initialize: %w", err)
 	}
 
-	app := application.New[Bindings, Config](log, cfgMng, userApp)
+	app := application.New[Bindings, Config](log, cfgMng, userApp, closer)
 	appConfig := cfgMng.Internal()
 
 	return wails.Run(&options.App{

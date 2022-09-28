@@ -14,13 +14,15 @@ type app[Bindings, UserConfig any] struct {
 	logger *logrus.Logger
 	config contracts.ConfigManager[UserConfig]
 	user   api.App[Bindings]
+	closer func()
 }
 
-func New[Bindings, UserConfig any](logger *logrus.Logger, config contracts.ConfigManager[UserConfig], user api.App[Bindings]) *app[Bindings, UserConfig] {
+func New[Bindings, UserConfig any](logger *logrus.Logger, config contracts.ConfigManager[UserConfig], user api.App[Bindings], closer func()) *app[Bindings, UserConfig] {
 	return &app[Bindings, UserConfig]{
 		logger: logger,
 		config: config,
 		user:   user,
+		closer: closer,
 	}
 }
 
@@ -57,4 +59,6 @@ func (me *app[Bindings, UserConfig]) OnShutdown(ctx context.Context) {
 	}
 
 	me.user.OnShutdown(ctx, me.ctx)
+
+	me.closer()
 }

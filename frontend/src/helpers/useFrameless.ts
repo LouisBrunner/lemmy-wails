@@ -1,4 +1,4 @@
-import {Environment} from "../../wailsjs/runtime/runtime";
+import {Environment} from "@wailsjs/runtime/runtime";
 import {useEffect, useState} from "react";
 
 export const useFrameless = (): boolean => {

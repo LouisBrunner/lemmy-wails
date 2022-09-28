@@ -1,9 +1,9 @@
-import {Demo} from "./pages/Demo";
-import {TopMenuBar} from "./pages/TopMenuBar";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import {createTheme, styled, ThemeProvider} from "@mui/material/styles";
 import {Box} from "@mui/system";
+import {TopMenuBar} from "components/TopMenuBar";
+import {Demo} from "pages/Demo";
 import {HashRouter, Route, Routes} from "react-router-dom";
 
 const theme = createTheme();

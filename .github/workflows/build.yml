@@ -44,3 +44,8 @@ jobs:
       with:
         name: Lemmy-windows-amd64
         path: build/bin/Lemmy-amd64.exe
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Lemmy-linux-amd64
+        path: build/bin/Lemmy-

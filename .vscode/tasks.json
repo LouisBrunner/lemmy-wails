@@ -33,7 +33,7 @@
         "-gcflags",
         "all=-N -l",
         "-o",
-        "build/bin/lemmy"
+        "build/bin/vscode"
       ]
     },
     {
@@ -68,7 +68,7 @@
         "-gcflags",
         "all=-N -l",
         "-o",
-        "build/bin/lemmy"
+        "build/bin/vscode"
       ]
     },
     {
@@ -103,9 +103,8 @@
         "-gcflags",
         "all=-N -l",
         "-o",
-        "build/bin/lemmy"
+        "build/bin/vscode"
       ]
     }
   ]
 }
-  

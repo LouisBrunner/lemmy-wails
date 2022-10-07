@@ -40,7 +40,7 @@ func updateNPM(logger *logrus.Logger, folder, version string) error {
 	if version == "latest" {
 		version = "main"
 	}
-	return execIn(logger, folder, "npm", "up", fmt.Sprintf("%s?%s", npmPackage, version))
+	return execIn(logger, folder, "npm", "--prefix", "frontend", "install", fmt.Sprintf("%s?%s", npmPackage, version))
 }
 
 func updateCI(logger *logrus.Logger, folder, version string) error {

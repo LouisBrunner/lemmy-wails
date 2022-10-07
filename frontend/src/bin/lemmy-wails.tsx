@@ -23,13 +23,11 @@ const commands = {
   clean: "rm -rf dist",
 };
 
-const ensureSetup = (): void => {
-  const source = join(configFolder, "tsconfig.vite.json");
-  const target = "./tsconfig.json";
+const linkFile = (source: string, target: string): void => {
   try {
     const stat = lstatSync(target);
     if (!stat.isSymbolicLink()) {
-      console.log("you are using a custom tsconfig.json, aborting");
+      console.log(`you are using a custom ${target}, aborting`);
       return;
     }
     const linkTo = readlinkSync(target);
@@ -43,6 +41,11 @@ const ensureSetup = (): void => {
     // eslint-ignore-line no-empty
   }
   symlinkSync(source, target);
+};
+
+const ensureSetup = (): void => {
+  linkFile(join(configFolder, "tsconfig.vite.json"), "tsconfig.json");
+  linkFile(join(configFolder, "index.html"), "index.html");
   console.log("setup successfully");
 };
 

@@ -25,7 +25,7 @@ func (me *updateCmd) Name() string {
 }
 
 func (me *updateCmd) Synopsis() string {
-	return "Update to the latest (or provided) version of Lemmy-Wails and sync the boilerplate."
+	return "Update to the latest (or provided) version of the boilerplate and sync it."
 }
 
 func (me *updateCmd) Usage() string {

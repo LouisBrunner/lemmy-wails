@@ -1,5 +1,12 @@
 name: Build
 
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+
 jobs:
   check:
     name: Lint & Test
@@ -28,13 +35,13 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: Lemmy-windows-amd64
-          path: build/bin/Lemmy-amd64.exe
+          name: ${{ inputs.name }}-windows-amd64
+          path: build/bin/${{ inputs.name }}-amd64.exe
 
       - uses: actions/upload-artifact@v3
         with:
-          name: Lemmy-linux-amd64
-          path: build/bin/Lemmy-linux-amd64
+          name: ${{ inputs.name }}-linux-amd64
+          path: build/bin/${{ inputs.name }}-linux-amd64
 
   build_macos:
     needs: check
@@ -48,10 +55,10 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: Lemmy-darwin-arm64
-          path: build/bin/Lemmy-arm64.app/
+          name: ${{ inputs.name }}-darwin-arm64
+          path: build/bin/${{ inputs.name }}-arm64.app/
 
       - uses: actions/upload-artifact@v3
         with:
-          name: Lemmy-darwin-amd64
-          path: build/bin/Lemmy-amd64.app/
+          name: ${{ inputs.name }}-darwin-amd64
+          path: build/bin/${{ inputs.name }}-amd64.app/

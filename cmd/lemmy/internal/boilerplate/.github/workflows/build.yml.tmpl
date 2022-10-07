@@ -6,4 +6,6 @@ jobs:
   build:
     name: Build App
     uses: {{.Boilerplate.CIURL}}@{{.BoilerplateVersion}}
+    with:
+      name: {{.Name}}
     secrets: inherit

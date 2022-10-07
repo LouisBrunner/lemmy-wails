@@ -24,7 +24,7 @@ func (me *syncCmd) Name() string {
 }
 
 func (me *syncCmd) Synopsis() string {
-	return "Sync the current directory with the Lemmy-Wails boilerplate."
+	return "Sync the current directory with the boilerplate."
 }
 
 func (me *syncCmd) Usage() string {

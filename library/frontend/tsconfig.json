@@ -15,12 +15,8 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
-    "paths": {
-      "@wailsjs/*": ["../wailsjs/*"]
-    }
+    "baseUrl": "src"
   },
   "include": ["src", "vite.config.ts"],
   "references": [

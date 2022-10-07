@@ -2,9 +2,7 @@
   "name": "lemmy-wails",
   "version": "0.0.0",
   "type": "module",
-  "bin": {
-    "lemmy-wails": "./dist/bin/lemmy-wails.js"
-  },
+  "bin": "./dist/bin/lemmy-wails.js",
   "exports": "./dist",
   "scripts": {
     "build": "tsc --outDir dist",

@@ -1,7 +1,11 @@
 package internal
 
-import "github.com/sirupsen/logrus"
+import (
+	"errors"
+
+	"github.com/sirupsen/logrus"
+)
 
 func Sync(logger *logrus.Logger, folder string) error {
-	panic("nope")
+	return errors.New("not implemented, yet")
 }

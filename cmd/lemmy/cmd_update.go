@@ -17,6 +17,7 @@ func newUpdateCmd(logger *logrus.Logger, cfg *config) subcommands.Command {
 
 type updateCmd struct {
 	commandCommons
+	version string
 }
 
 func (me *updateCmd) Name() string {
@@ -24,7 +25,7 @@ func (me *updateCmd) Name() string {
 }
 
 func (me *updateCmd) Synopsis() string {
-	return "Update to the latest version of Lemmy-Wails and sync the boilerplate."
+	return "Update to the latest (or provided) version of Lemmy-Wails and sync the boilerplate."
 }
 
 func (me *updateCmd) Usage() string {
@@ -32,10 +33,11 @@ func (me *updateCmd) Usage() string {
 }
 
 func (me *updateCmd) SetFlags(f *flag.FlagSet) {
+	f.StringVar(&me.version, "version", "latest", "which version to upgrade to")
 }
 
 func (me *updateCmd) Execute(ctx context.Context, f *flag.FlagSet, args ...interface{}) subcommands.ExitStatus {
-	err := internal.Update(me.logger, me.cfg.folder)
+	err := internal.Update(me.logger, me.version, me.cfg.folder)
 	if err != nil {
 		return me.fromError(err)
 	}

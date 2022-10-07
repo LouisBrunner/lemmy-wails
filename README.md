@@ -4,7 +4,12 @@ This is a boilerplate generator/library for `wails` projects.
 
 ## Installation
 
-Run `go run github.com/LouisBrunner/lemmy-wails/cmd/lemmy init` in the folder you want to build your app.
+Run the following in the folder you want to build your app:
+
+```bash
+go mod init example.com
+go run github.com/LouisBrunner/lemmy-wails/cmd/lemmy init -name "App Name" -authorName "your name" -authorEmail "your email" -repo "github.com/your/repo"
+```
 
 ## Update & Sync
 

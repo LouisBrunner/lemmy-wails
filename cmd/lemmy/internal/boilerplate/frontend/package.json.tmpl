@@ -1,0 +1,18 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "{{.Boilerplate.Name}} dev",
+    "build": "{{.Boilerplate.Name}} build",
+    "types": "{{.Boilerplate.Name}} types",
+    "lint": "{{.Boilerplate.Name}} lint",
+    "format": "{{.Boilerplate.Name}} format",
+    "format-fix": "{{.Boilerplate.Name}} format-fix",
+    "postinstall": "{{.Boilerplate.Name}} setup"
+  },
+  "dependencies": {
+    "{{.Boilerplate.Name}}": "{{.Boilerplate.NPMPackage}}?{{.BoilerplateVersion}}"
+  }
+}

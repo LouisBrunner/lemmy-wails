@@ -1,0 +1,9 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build App
+    uses: {{.Boilerplate.CIURL}}@{{.BoilerplateVersion}}
+    secrets: inherit

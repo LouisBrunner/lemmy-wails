@@ -4,7 +4,7 @@ all: lint test
 .PHONY: all
 
 install:
-	go download
+	go mod download
 	$(NPM) i
 .PHONY: install
 

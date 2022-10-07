@@ -4,7 +4,7 @@ runs:
   using: composite
   steps:
     - name: Setup
-      uses: LouisBrunner/lemmy-wails/.github/actions/setup
+      uses: LouisBrunner/lemmy-wails/.github/actions/setup@main
 
     - name: Install system dependencies (Linux)
       shell: bash

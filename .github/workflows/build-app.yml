@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup
-        uses: LouisBrunner/lemmy-wails/.github/actions/setup
+        uses: LouisBrunner/lemmy-wails/.github/actions/setup@main
 
       - name: Lint
         run: make lint
@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build
-        uses: LouisBrunner/lemmy-wails/.github/actions/build
+        uses: LouisBrunner/lemmy-wails/.github/actions/build@main
 
       - uses: actions/upload-artifact@v3
         with:
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build
-        uses: LouisBrunner/lemmy-wails/.github/actions/build
+        uses: LouisBrunner/lemmy-wails/.github/actions/build@main
 
       - uses: actions/upload-artifact@v3
         with:

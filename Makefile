@@ -1,44 +1,20 @@
 NPM = npm --prefix frontend
 
-all: lint
+all: lint test
 .PHONY: all
 
-generate:
-# handle issues when generating from scratch
-	mkdir -p frontend/dist
-	touch frontend/dist/.tmp
-	wails generate module
-.PHONY: generate
-
-dev: generate
-	wails dev
-.PHONY: dev
-
-build: generate
-	wails build
-.PHONY: build
-
-build-all: generate
-	wails build -platform darwin/amd64,darwin/arm64,windows/amd64,linux/amd64
-.PHONY: build-all
-
 install:
-	go install github.com/wailsapp/wails/v2/cmd/wails@latest
+	go download
 	$(NPM) i
-	make doctor
 .PHONY: install
 
-doctor:
-	wails doctor
-.PHONY: doctor
-
-lint-ts: generate
+lint-ts:
 	$(NPM) run format
 	$(NPM) run lint
 	$(NPM) run types
 .PHONY: lint-ts
 
-lint-go: generate
+lint-go:
 	go vet ./...
 	go run honnef.co/go/tools/cmd/staticcheck ./...
 .PHONY: lint-go
@@ -50,9 +26,9 @@ format-fix-ts:
 	$(NPM) run format-fix
 .PHONY: format-fix-ts
 
-test: generate
+test:
 .PHONY: test
 
 clean:
-	rm -rf build/bin frontend/dist frontend/wailsjs
+	rm -rf frontend/dist
 .PHONY: clean

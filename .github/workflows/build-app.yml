@@ -1,0 +1,59 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    name: Lint & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Lint
+        run: make lint
+
+      - name: Test
+        run: make test
+
+  build_linux:
+    needs: check
+    name: Build for Linux and Windows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build
+        uses: ./.github/actions/build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Lemmy-windows-amd64
+          path: build/bin/Lemmy-amd64.exe
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Lemmy-linux-amd64
+          path: build/bin/Lemmy-linux-amd64
+
+  build_macos:
+    needs: check
+    name: Build for macOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build
+        uses: ./.github/actions/build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Lemmy-darwin-arm64
+          path: build/bin/Lemmy-arm64.app/
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Lemmy-darwin-amd64
+          path: build/bin/Lemmy-amd64.app/

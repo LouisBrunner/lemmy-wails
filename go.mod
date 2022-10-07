@@ -1,9 +1,10 @@
-module github.com/LouisBrunner/lemmy
+module github.com/LouisBrunner/lemmy-wails
 
 go 1.18
 
 require (
 	github.com/emersion/go-appdir v1.1.2
+	github.com/google/subcommands v1.2.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/vektra/mockery/v2 v2.14.0
 	github.com/wailsapp/wails/v2 v2.0.0

@@ -1,18 +1,38 @@
 {
-  "name": "frontend",
-  "private": true,
+  "name": "lemmy-wails",
   "version": "0.0.0",
   "type": "module",
+  "bin": "./dist/bin/lemmy-wails.js",
+  "exports": "./dist",
   "scripts": {
-    "dev": "lemmy-wails dev",
-    "build": "lemmy-wails build",
-    "types": "lemmy-wails types",
-    "lint": "lemmy-wails lint",
-    "format": "lemmy-wails format",
-    "format-fix": "lemmy-wails format-fix",
-    "postinstall": "lemmy-wails setup"
+    "build": "tsc --outDir dist",
+    "types": "tsc --noEmit",
+    "lint": "eslint . --ext .ts --ext tsx",
+    "format": "prettier --check .",
+    "format-fix": "prettier --write .",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
-    "lemmy-wails": "file:../library/frontend"
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1",
+    "@emotion/eslint-plugin": "^11.10.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "@types/node": "^18.7.23",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "@vitejs/plugin-react": "^2.0.1",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.8",
+    "prettier": "2.7.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7",
+    "vite-tsconfig-paths": "^3.5.1"
   }
 }

@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .ts --ext tsx",
     "format": "prettier --check .",
     "format-fix": "prettier --write .",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",

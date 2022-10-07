@@ -33,6 +33,7 @@ type initDataBoilerplate struct {
 	URL        string
 	NPMPackage string
 	CIURL      string
+	Command    string
 }
 
 func Init(logger *logrus.Logger, data InitData, folder string, force bool) error {
@@ -52,6 +53,7 @@ func Init(logger *logrus.Logger, data InitData, folder string, force bool) error
 		URL:        packageURL,
 		NPMPackage: npmPackage,
 		CIURL:      ciURL,
+		Command:    packageCommand,
 	}
 
 	templateMe := func(content string) (string, error) {

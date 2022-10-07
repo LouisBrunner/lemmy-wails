@@ -11,6 +11,7 @@ var (
 	packageName      = "lemmy-wails"
 	packageNamespace = fmt.Sprintf("LouisBrunner/%s", packageName)
 	packageURL       = fmt.Sprintf("github.com/%s", packageNamespace)
+	packageCommand   = "lemmy"
 	pathFrontend     = "frontend"
 	pathCI           = filepath.Join(".github", "workflows", "build.yml")
 	ciURL            = fmt.Sprintf("%s/.github/workflows/build-app.yml", packageNamespace)

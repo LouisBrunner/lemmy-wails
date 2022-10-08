@@ -1,4 +1,4 @@
-import {useFrameless, useFramelessProps} from "helpers/useFrameless";
+import {useFrameless, useFramelessProps} from "@lemmy/helpers/useFrameless";
 
 export type TopMenuBarProps = useFramelessProps;
 

@@ -16,7 +16,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "baseUrl": "src"
+    "paths": {
+      "@lemmy/*": ["./src/*"]
+    }
   },
   "include": ["src", "*.config.ts"],
   "references": [

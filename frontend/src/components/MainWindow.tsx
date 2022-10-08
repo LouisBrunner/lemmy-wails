@@ -1,5 +1,5 @@
-import {Error} from "components/Error";
-import {TopMenuBar, TopMenuBarProps} from "components/TopMenuBar";
+import {Error} from "@lemmy/components/Error";
+import {TopMenuBar, TopMenuBarProps} from "@lemmy/components/TopMenuBar";
 import {Theme, ThemeProps} from "react-daisyui";
 import {ErrorBoundary, ErrorBoundaryProps} from "react-error-boundary";
 import {createHashRouter, RouteObject, RouterProvider} from "react-router-dom";

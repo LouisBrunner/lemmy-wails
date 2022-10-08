@@ -3,5 +3,4 @@ node_modules
 wailsjs
 tsconfig.json
 .prettierrc.json
-index.html
 package.json.md5

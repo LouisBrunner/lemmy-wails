@@ -6,7 +6,7 @@
       "@wailsjs/*": ["../wailsjs/*"],
       "@lemmy/*": ["../node_modules/lemmy-wails/src/*"]
     },
-    "baseUrl": "../../src"
+    "baseUrl": "src"
   },
-  "include": ["../../src", "src"]
+  "include": ["src"]
 }

@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layers utilities {
+  .wails-drag {
+    --wails-draggable: drag;
+  }
+
+  .wails-no-drag {
+    --wails-draggable: drag;
+  }
+}

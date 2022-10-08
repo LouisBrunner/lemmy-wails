@@ -2,14 +2,14 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.eslint.json"
+    "project": "./tsconfig.json"
   },
   "settings": {
     "react": {
       "version": "detect"
     }
   },
-  "plugins": ["@typescript-eslint", "react", "@emotion"],
+  "plugins": ["@typescript-eslint", "react"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",

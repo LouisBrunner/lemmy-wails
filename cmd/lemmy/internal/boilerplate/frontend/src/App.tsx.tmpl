@@ -1,22 +1,17 @@
-import { MainWindow } from "{{.Boilerplate.Name}}/components/MainWindow";
-import { createTheme, styled } from "@mui/material/styles";
-import { Box } from "@mui/system";
+import { MainWindow, WrapperProps } from "@lemmy/components/MainWindow";
 import { Demo } from "pages/Demo";
 import { Environment } from '@wailsjs/runtime';
 
-const theme = createTheme();
-
-const MyBox = styled(Box)`
-  background: red;
-  height: 100vh;
-  display: flow-root;
-`;
+const Background = ({children}: WrapperProps): JSX.Element => {
+  return (
+    <div className="bg-red h-screen flow-root">{children}</div>
+  )
+}
 
 export const App = (): JSX.Element => {
   return (
     <MainWindow
-      theme={theme}
-      Wrapper={MyBox}
+      Wrapper={Background}
       routes={[
         {
           path: "/",

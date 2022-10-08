@@ -1,18 +1,16 @@
-import { Greet } from "@wailsjs/go/bindings/bindings";
-import { ChangeEvent, FormEvent, useCallback, useState } from "react";
-import { Button, Input } from "react-daisyui";
+import {Greet} from "@wailsjs/go/bindings/bindings";
+import {ChangeEvent, FormEvent, useCallback, useState} from "react";
+import {Button, Input} from "react-daisyui";
 
 export const Demo = (): JSX.Element => {
-  const [resultText, setResultText] = useState(
-    "Please enter your name below 👇"
-  );
+  const [resultText, setResultText] = useState("Please enter your name below 👇");
   const [name, setName] = useState("");
 
   const updateName = useCallback(
     (e: ChangeEvent<HTMLInputElement>): void => {
       setName(e.target.value);
     },
-    [setName]
+    [setName],
   );
 
   const greet = useCallback(
@@ -21,7 +19,7 @@ export const Demo = (): JSX.Element => {
       const greeting = await Greet(name);
       setResultText(greeting);
     },
-    [name, setResultText]
+    [name, setResultText],
   );
 
   return (

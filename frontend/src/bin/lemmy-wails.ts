@@ -33,6 +33,7 @@ const linkFile = (source: string, target: string): void => {
 };
 
 const ensureSetup = (): void => {
+  linkFile(prettierConfig, ".prettierrc.json");
   linkFile(join(configFolder, "tsconfig.vite.json"), "tsconfig.json");
   linkFile(join(configFolder, "index.html"), "index.html");
   console.log("setup successfully");

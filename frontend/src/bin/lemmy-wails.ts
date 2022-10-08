@@ -6,7 +6,6 @@ import {fileURLToPath} from "url";
 
 const configFolder = normalize(join(dirname(fileURLToPath(import.meta.url)), ".."));
 const viteConfig = join(configFolder, "vite.config.ts");
-const tsConfig = join(configFolder, "tsconfig.json");
 const eslintConfig = join(configFolder, ".eslintrc");
 const eslintIgnore = join(configFolder, ".eslintignore");
 const prettierConfig = join(configFolder, ".prettierrc.json");
@@ -42,8 +41,8 @@ const ensureSetup = (): void => {
 const commands = {
   setup: ensureSetup,
   dev: `vite -c ${viteConfig}`,
-  build: `tsc -p ${tsConfig} && vite -c ${viteConfig} build`,
-  types: `tsc -p ${tsConfig} --noEmit`,
+  build: `tsc && vite -c ${viteConfig} build`,
+  types: `tsc --noEmit`,
   lint: `eslint -c ${eslintConfig} --ignore-path ${eslintIgnore} . --ext .ts --ext tsx`,
   format: `prettier --config ${prettierConfig} --ignore-path ${prettierIgnore} --check .`,
   "format-fix": `prettier --config ${prettierConfig} --ignore-path ${prettierIgnore} --write .`,

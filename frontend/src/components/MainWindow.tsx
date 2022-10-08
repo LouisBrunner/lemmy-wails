@@ -11,10 +11,10 @@ export type WrapperProps = {
 export type Wrapper = (props: WrapperProps) => JSX.Element;
 
 export type MainWindowProps = {
-  theme: ThemeProps["dataTheme"];
+  theme?: ThemeProps["dataTheme"];
   routes: RouteObject[];
   Wrapper?: Wrapper | string;
-  ErrorFallback: ErrorBoundaryProps["FallbackComponent"];
+  ErrorFallback?: ErrorBoundaryProps["FallbackComponent"];
 } & TopMenuBarProps;
 
 export const MainWindow = ({theme, routes, Wrapper = "div", ErrorFallback, getEnvironment}: MainWindowProps): JSX.Element => {

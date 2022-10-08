@@ -6,5 +6,6 @@
       "@wailsjs/*": ["../wailsjs/*"]
     },
     "baseUrl": "src"
-  }
+  },
+  "include": ["src"]
 }

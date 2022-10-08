@@ -7,7 +7,7 @@
     "./*": "./dist/*"
   },
   "scripts": {
-    "build": "tsc --outDir dist",
+    "build": "tsc --declaration --outDir dist",
     "types": "tsc --noEmit",
     "lint": "eslint . --ext .ts --ext tsx",
     "format": "prettier --check .",

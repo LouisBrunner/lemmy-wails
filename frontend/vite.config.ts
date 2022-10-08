@@ -1,3 +1,4 @@
+import postcssConfig from "./postcss.config";
 import react from "@vitejs/plugin-react";
 import {resolve} from "path";
 import {defineConfig} from "vite";
@@ -9,6 +10,9 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     outDir: resolve(__dirname, "..", "..", "dist"),
+  },
+  css: {
+    postcss: postcssConfig,
   },
   plugins: [
     react(),

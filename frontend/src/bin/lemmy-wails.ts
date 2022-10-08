@@ -32,10 +32,10 @@ const linkFile = (source: string, target: string): void => {
     }
     const linkTo = readlinkSync(target);
     if (linkTo === source) {
-      console.log("already setup, skipping");
+      console.log(`${target} already setup, skipping`);
       return;
     }
-    console.log("recreating link");
+    console.log(`recreating link to ${target}`);
     unlinkSync(target);
   } catch {
     // eslint-ignore-line no-empty

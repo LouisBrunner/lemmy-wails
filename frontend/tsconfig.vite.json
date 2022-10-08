@@ -3,7 +3,8 @@
   "compilerOptions": {
     "noEmit": true,
     "paths": {
-      "@wailsjs/*": ["../wailsjs/*"]
+      "@wailsjs/*": ["../wailsjs/*"],
+      "@lemmy/*": ["./node_nodules/lemmy-wails/src/*"]
     },
     "baseUrl": "src"
   },

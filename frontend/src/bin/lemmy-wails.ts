@@ -4,7 +4,7 @@ import {lstatSync, readlinkSync, symlinkSync, unlinkSync} from "fs";
 import {join, dirname, normalize} from "path";
 import {fileURLToPath} from "url";
 
-const configFolder = normalize(join(dirname(fileURLToPath(import.meta.url)), "..", ".."));
+const configFolder = normalize(join(dirname(fileURLToPath(import.meta.url)), ".."));
 const viteConfig = join(configFolder, "vite.config.ts");
 const tsConfig = join(configFolder, "tsconfig.json");
 const eslintConfig = join(configFolder, ".eslintrc");

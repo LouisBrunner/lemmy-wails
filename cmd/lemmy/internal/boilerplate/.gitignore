@@ -1,5 +1,2 @@
 .DS_Store
 build/bin
-frontend/wailsjs
-frontend/tsconfig.json
-frontend/package.json.md5

@@ -10,7 +10,7 @@
     "lint": "{{.Boilerplate.Name}} lint",
     "format": "{{.Boilerplate.Name}} format",
     "format-fix": "{{.Boilerplate.Name}} format-fix",
-    "postinstall": "{{.Boilerplate.Name}} setup"
+    "postinstall": "npm rebuild --ignore-scripts && {{.Boilerplate.Name}} setup"
   },
   "dependencies": {
     "{{.Boilerplate.Name}}": "{{.Boilerplate.NPMPackage}}?{{.BoilerplateVersion}}"

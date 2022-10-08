@@ -4,6 +4,7 @@
     "noEmit": true,
     "paths": {
       "@wailsjs/*": ["../wailsjs/*"]
-    }
+    },
+    "baseUrl": "src"
   }
 }

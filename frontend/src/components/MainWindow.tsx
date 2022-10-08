@@ -1,36 +1,40 @@
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import {Theme, ThemeProvider} from "@mui/material/styles";
+import {Error} from "components/Error";
 import {TopMenuBar, TopMenuBarProps} from "components/TopMenuBar";
+import {ErrorBoundary, ErrorBoundaryProps} from "react-error-boundary";
 import {createHashRouter, RouteObject, RouterProvider} from "react-router-dom";
 
-type WrapperProps = {
+export type WrapperProps = {
   children: JSX.Element[];
 };
 
-type Wrapper = (props: WrapperProps) => JSX.Element;
+export type Wrapper = (props: WrapperProps) => JSX.Element;
 
-type MainWindowProps = {
+export type MainWindowProps = {
   theme: Theme;
   routes: RouteObject[];
-  wrapper: Wrapper;
+  Wrapper: Wrapper;
+  ErrorFallback: ErrorBoundaryProps["FallbackComponent"];
 } & TopMenuBarProps;
 
-export const MainWindow = ({theme, routes, wrapper, getEnvironment}: MainWindowProps): JSX.Element => {
+export const MainWindow = ({theme, routes, Wrapper, ErrorFallback, getEnvironment}: MainWindowProps): JSX.Element => {
   const router = createHashRouter(routes);
-  const Wrapper = wrapper;
 
   return (
     <ThemeProvider theme={theme}>
-      <Wrapper>
-        <TopMenuBar getEnvironment={getEnvironment} />
+      <ErrorBoundary FallbackComponent={ErrorFallback ?? Error}>
+        <Wrapper>
+          <TopMenuBar getEnvironment={getEnvironment} />
 
-        <Container component="main">
-          <CssBaseline />
+          <Container component="main">
+            <CssBaseline />
 
-          <RouterProvider router={router} />
-        </Container>
-      </Wrapper>
+            <RouterProvider router={router} />
+          </Container>
+        </Wrapper>
+      </ErrorBoundary>
     </ThemeProvider>
   );
 };

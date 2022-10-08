@@ -1,12 +1,11 @@
 import React from "react";
 import {createRoot} from "react-dom/client";
 
-type mainProps = {
-  app: () => JSX.Element;
+export type mainProps = {
+  App: () => JSX.Element;
 };
 
-export const main = ({app}: mainProps): void => {
-  const App = app;
+export const main = ({App}: mainProps): void => {
   const container = document.getElementById("root");
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

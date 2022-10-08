@@ -8,7 +8,6 @@ const configFolder = normalize(join(dirname(fileURLToPath(import.meta.url)), "..
 const viteConfig = join(configFolder, "vite.config.ts");
 const eslintConfig = join(configFolder, ".eslintrc");
 const eslintIgnore = join(configFolder, ".eslintignore");
-const prettierConfig = join(configFolder, ".prettierrc.json");
 const prettierIgnore = join(configFolder, ".prettierignore");
 
 const linkFile = (source: string, target: string): void => {
@@ -32,7 +31,7 @@ const linkFile = (source: string, target: string): void => {
 };
 
 const ensureSetup = (): void => {
-  linkFile(prettierConfig, ".prettierrc.json");
+  linkFile(join(configFolder, ".prettierrc.json"), ".prettierrc.json");
   linkFile(join(configFolder, "tsconfig.vite.json"), "tsconfig.json");
   linkFile(join(configFolder, "index.html"), "index.html");
   console.log("setup successfully");
@@ -44,8 +43,8 @@ const commands = {
   build: `tsc && vite -c ${viteConfig} build`,
   types: `tsc --noEmit`,
   lint: `eslint -c ${eslintConfig} --ignore-path ${eslintIgnore} . --ext .ts --ext tsx`,
-  format: `prettier --config ${prettierConfig} --ignore-path ${prettierIgnore} --check .`,
-  "format-fix": `prettier --config ${prettierConfig} --ignore-path ${prettierIgnore} --write .`,
+  format: `prettier --ignore-path ${prettierIgnore} --check .`,
+  "format-fix": `prettier --ignore-path ${prettierIgnore} --write .`,
   clean: "rm -rf dist",
 };
 

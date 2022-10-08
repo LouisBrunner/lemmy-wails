@@ -8,5 +8,5 @@
     },
     "baseUrl": "src"
   },
-  "include": ["src"]
+  "include": ["src", "node_modules/lemmy-wails/src"]
 }

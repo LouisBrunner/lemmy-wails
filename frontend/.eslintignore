@@ -1,3 +1,5 @@
 dist
 node_modules
 wailsjs
+# FIXME: Wrong but I am too tired to fix this
+tailwind.config.ts

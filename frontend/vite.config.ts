@@ -9,10 +9,13 @@ export default defineConfig({
   root: __dirname,
   build: {
     emptyOutDir: true,
-    outDir: resolve(__dirname, "..", "..", "dist"),
+    outDir: resolve(__dirname, "user", "dist"),
   },
   css: {
     postcss: postcssConfig,
+  },
+  server: {
+    open: true,
   },
   plugins: [
     react(),

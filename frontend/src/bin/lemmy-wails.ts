@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import {execSync} from "child_process";
 import {lstatSync, readlinkSync, symlinkSync, unlinkSync} from "fs";
-import {join, dirname, normalize} from "path";
+import {join, dirname, resolve} from "path";
 import {fileURLToPath} from "url";
 
-const configFolder = normalize(join(dirname(fileURLToPath(import.meta.url)), ".."));
+const configFolder = resolve(join(dirname(fileURLToPath(import.meta.url)), ".."));
 const viteConfig = join(configFolder, "vite.config.ts");
 const eslintConfig = join(configFolder, ".eslintrc");
 const eslintIgnore = join(configFolder, ".eslintignore");
@@ -31,6 +31,7 @@ const linkFile = (source: string, target: string): void => {
 };
 
 const ensureSetup = (): void => {
+  linkFile(resolve("."), join(configFolder, "user"));
   linkFile(join(configFolder, ".prettierrc.json"), ".prettierrc.json");
   linkFile(join(configFolder, "tsconfig.user.json"), "tsconfig.json");
   console.log("setup successfully");

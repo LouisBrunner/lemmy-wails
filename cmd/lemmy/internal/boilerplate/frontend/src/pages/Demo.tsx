@@ -24,7 +24,7 @@ export const Demo = (): JSX.Element => {
 
   return (
     <div className="mt-4 flex flex-col items-center">
-      <h1>Greetings</h1>
+      <h1 className="text-3xl my-4">Greetings</h1>
       <form className="mt-1" onSubmit={greet} noValidate>
         <p>{resultText}</p>
         <div className="form-control w-full max-w-xs">

@@ -20,7 +20,7 @@
       "@lemmy/*": ["./src/*"]
     }
   },
-  "include": ["src", "*.config.ts"],
+  "include": ["src"],
   "references": [
     {
       "path": "./tsconfig.node.json"

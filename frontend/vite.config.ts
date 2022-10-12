@@ -16,6 +16,12 @@ export default defineConfig({
   },
   server: {
     open: true,
+    fs: {
+      strict: false,
+    },
+  },
+  optimizeDeps: {
+    include: ['react-dom/client']
   },
   plugins: [
     react(),

@@ -8,5 +8,5 @@ export const TopMenuBar = ({getEnvironment}: TopMenuBarProps): JSX.Element | nul
   if (!frameless) {
     return null;
   }
-  return <div className="p-[30px] h-full wails-drag" />;
+  return <div className="p-[30px] w-full wails-drag" />;
 };

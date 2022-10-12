@@ -21,7 +21,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['react-dom/client']
+    include: ["react-dom/client"],
   },
   plugins: [
     react(),

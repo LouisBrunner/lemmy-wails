@@ -1,4 +1,5 @@
 NPM = npm --prefix frontend
+WAILS = go run github.com/wailsapp/wails/v2/cmd/wails
 
 all: lint
 .PHONY: all
@@ -7,19 +8,19 @@ generate:
 # handle issues when generating from scratch
 	mkdir -p frontend/dist
 	touch frontend/dist/.tmp
-	wails generate module
+	$(WAILS) generate module
 .PHONY: generate
 
 dev: generate
-	wails dev
+	$(WAILS) dev
 .PHONY: dev
 
 build: generate
-	wails build
+	$(WAILS) build
 .PHONY: build
 
 build-all: generate
-	wails build -platform darwin/amd64,darwin/arm64,windows/amd64,linux/amd64
+	$(WAILS) build -platform darwin/amd64,darwin/arm64,windows/amd64,linux/amd64
 .PHONY: build-all
 
 install:
@@ -29,7 +30,7 @@ install:
 .PHONY: install
 
 doctor:
-	wails doctor
+	$(WAILS) doctor
 .PHONY: doctor
 
 lint-ts: generate

@@ -4,6 +4,7 @@ all: lint test
 .PHONY: all
 
 install:
+	go install github.com/wailsapp/wails/v2/cmd/wails@latest
 	go mod download
 	$(NPM) i
 .PHONY: install
